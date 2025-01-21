@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
+
 # Define el manejador de las solicitudes HTTP
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -19,11 +20,13 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         <body>
             <h1>Hola desde un servidor Python</h1>
             <p>Este es un servidor simple que responde a solicitudes GET.</p>
+            <img src= https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thebestf1.es%2Falonso-habla-famosa-imagen-tras-perder-mundial-2012%2F&psig=AOvVaw0fm0s1pHMfrsmzbrQEqxZQ&ust=1737569882501000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPCJ_K22h4sDFQAAAAAdAAAAABAE>
         </body>
         </html>"""
 
         # Escribir el contenido HTML en la respuesta
         self.wfile.write(html_content.encode("utf-8"))
+
 
 # Configura el servidor
 if __name__ == "__main__":

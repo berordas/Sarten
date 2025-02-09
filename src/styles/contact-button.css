@@ -1,0 +1,24 @@
+.contact-button {
+    background-color: #444;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+.contact-button.registrarse {
+    margin-left: auto;
+    background-color: #444;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+.contact-button:hover {
+    background-color: #666;
+}

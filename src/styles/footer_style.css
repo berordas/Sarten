@@ -1,8 +1,9 @@
 footer {
     background-color: #222;
-    height: 320px;
+    min-height: 320px;
     color: white;
     text-align: center;
+    margin-top: auto;
 }
 
 .footer-container {
@@ -79,3 +80,4 @@ footer {
     font-size: 14px;
     color: #bbb;
 }
+

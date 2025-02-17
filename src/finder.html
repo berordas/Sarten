@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>SartenAuctions</title>
+    <link rel="stylesheet" href="styles/finder_style.css">
+    <link rel="stylesheet" href="styles/header_style.css">
+    <link rel="stylesheet" href="styles/footer_style.css">
+    <link rel="stylesheet" href="styles/contact_button.css">
+  </head>
+  
+  <body>
+    <header>
+        <div class="logo">SartenAuctions</div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="#">Servicios</a>
+            <a href="#">Productos</a>
+            <a href="#">Nosotros</a>
+        </nav>
+        <a href="login.html" class="cta-button">Iniciar Sesion</a>
+    </header>
+
+    <main>
+        <section class="busqueda">
+            <input type="text" id="buscarInput" placeholder="Buscar un sartén..." onkeyup="buscarProducto()">
+        </section>
+        <section id="resultados" class="resultados"></section>
+
+        <script src="scripts/finder_script.js"></script>
+    </main>
+
+
+    <footer>
+        <section class="footer-container">
+            <!-- Sección Información -->
+            <section class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>Somos una empresa dedicada a ofrecer una plataforma para vender sartenes por todo el mundo.</p>
+            </section>
+  
+            <!-- Sección Enlaces -->
+            <section class="footer-section">
+                <h3>Enlaces Útiles</h3>
+                <ul>
+                    <li><a href="#">Términos de Uso</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                </ul>
+            </section>
+  
+            <!-- Sección Redes Sociales -->
+            <section class="footer-section">
+                <h3>Síguenos</h3>
+                <ul class="social-icons">
+                    <a href="#">🔵</a>
+                    <a href="#">🟣</a>
+                    <a href="#">🔴</a>
+                </ul>
+              </section>
+            </section>
+  
+          <section class="footer-bottom">
+              &copy; 2025 SartenAuctions | Todos los derechos reservados
+          </section>
+        </section>
+    </footer>
+    </body>
+  </html>

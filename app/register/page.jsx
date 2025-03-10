@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./register_style.module.css"; // ✅ Importación correcta
+import styles from "./register_style.module.css"; 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -85,6 +85,7 @@ export default function Register() {
             setError(err.message);
         }
     };
+    
 
     return (
         <main className={styles["main-register"]}>

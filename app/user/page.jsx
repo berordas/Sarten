@@ -25,7 +25,7 @@ export default function UserProfile() {
             return;
         }
 
-        fetch("https://das-p2-backend.onrender.com/api/users/profile/", {
+        fetch("https://sarten-backend.onrender.com/api/users/profile/", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,

@@ -57,7 +57,7 @@ export default function Register() {
         const formattedDate = formData.birth_date.split("/").reverse().join("-");
     
         try {
-            const response = await fetch("https://das-p2-backend.onrender.com/api/users/register/", {
+            const response = await fetch("https://sarten-backend.onrender.com/api/users/register/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

@@ -10,12 +10,22 @@ export default function Home() {
   const router = useRouter();
   const [username, setUsername] = useState(null);
 
+
   useEffect(() => {
-      const storedUsername = localStorage.getItem("username");
-      if (storedUsername) {
-          setUsername(storedUsername);
-      }
-  }, []);
+    const token = localStorage.getItem("accessToken");
+
+    fetch("https://sarten-backend.onrender.com/api/users/profile/", {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        setUsername(data.username);
+    });
+}, []);
 
 
 
@@ -35,9 +45,9 @@ export default function Home() {
             Vender una Sartén
           </a>
           {username && (
-                        <button className="cta-button" onClick={() => router.push("/user")}>
+                        <a className="cta-button-info" onClick={() => router.push("/user")}>
                             Bienvenido {username}
-                        </button>
+                        </a>
                     )}
         </nav>
       </header>

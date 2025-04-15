@@ -59,6 +59,25 @@ export default function UserProfile() {
                     <p><strong>Localidad:</strong> {userData.locality}</p>
                     <p><strong>Municipio:</strong> {userData.municipality}</p>
                 </div>
+                <form onSubmit={handlePasswordChange} className={styles["passwordForm"]}>
+                    <h3>Cambiar Contraseña</h3>
+                    <input
+                        type="password"
+                        placeholder="Contraseña actual"
+                        value={passwordData.currentPassword}
+                        // onChange={e => setPasswordData({...passwordData, currentPassword: e.target.value})}
+                        // required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Nueva contraseña"
+                        value={passwordData.newPassword}
+                        // onChange={e => setPasswordData({...passwordData, newPassword: e.target.value})}
+                        // required
+                    />
+                    {message && <p className={styles.message}>{message}</p>}
+                    <button type="submit" className="cta-button">Cambiar Contraseña</button>
+                </form>
                 <button type="button" className="cta-button" onClick={() => router.push("/")}>Volver</button>
             </section>
         </main>

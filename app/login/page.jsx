@@ -27,8 +27,9 @@ export default function Home() {
 
             const data = await response.json();
             localStorage.setItem("accessToken", data.access);
+            localStorage.setItem("refreshToken", data.refresh);
             localStorage.setItem("username", data.username);
-            router.push("/");
+            window.location.href = "/";
         } catch (err) {
             setError(err.message);
         }

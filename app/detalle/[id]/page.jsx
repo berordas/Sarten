@@ -102,7 +102,20 @@ export default function DetalleSubasta() {
 
     try {
       const token = localStorage.getItem("accessToken");
-      const username = localStorage.getItem("username");
+      
+      // Obtener el username del usuario mediante una petición
+      const userResponse = await fetch("https://sarten-backend.onrender.com/api/users/profile/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!userResponse.ok) {
+        throw new Error("Error al obtener los datos del usuario");
+      }
+
+      const userData = await userResponse.json();
+      const username = userData.username;
 
       const bodyData = {
         price: pujaValor,
@@ -179,51 +192,54 @@ export default function DetalleSubasta() {
         Fecha de cierre: {new Date(subasta.closing_date).toLocaleString()}
       </p>
 
-      <div className={styles["pujaContainer"]}>
-        <h2>Realizar una puja</h2>
-        <div className={styles["pujaForm"]}>
-          <input
-            type="number"
-            placeholder="Introduce tu puja"
-            min={subasta.price}
-            step="0.01"
-            value={pujaValor}
-            onChange={(e) => setPujaValor(e.target.value)}
-            className={styles["pujaInput"]}
-          />
-          <button 
-            onClick={handlePuja}
-            className={`${styles["pujaButton"]} cta-button-bid`}
-          >
-            Confirmar Puja
-          </button>
-        </div>
-        {mensajePuja && (
-          <p className={`${styles["mensajePuja"]} ${mensajePuja.includes("éxito") ? styles["exitoso"] : styles["error"]}`}>
-            {mensajePuja}
-          </p>
-        )}
-        <p className={styles["pujaInfo"]}>
-          La puja debe ser mayor que el precio actual: ${subasta.price}
-        </p>
-
-        <div className={styles["historialPujas"]}>
-          <h3>Historial de Pujas</h3>
-          {historialPujas && historialPujas.length > 0 ? (
-            <ul>
-              {historialPujas.map((puja, index) => {
-                console.log("Renderizando puja:", puja);
-                return (
-                  <li key={index}>
-                    Puja {index + 1}: ${puja.price}
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <p>No hay pujas anteriores</p>
+      {new Date(subasta.closing_date) > new Date() ? (
+        <div className={styles["pujaContainer"]}>
+          <h2>Realizar una puja</h2>
+          <div className={styles["pujaForm"]}>
+            <input
+              type="number"
+              placeholder="Introduce tu puja"
+              min={subasta.price}
+              step="0.01"
+              value={pujaValor}
+              onChange={(e) => setPujaValor(e.target.value)}
+              className={styles["pujaInput"]}
+            />
+            <button 
+              onClick={handlePuja}
+              className={`${styles["pujaButton"]} cta-button-bid`}
+            >
+              Confirmar Puja
+            </button>
+          </div>
+          {mensajePuja && (
+            <p className={`${styles["mensajePuja"]} ${mensajePuja.includes("éxito") ? styles["exitoso"] : styles["error"]}`}>
+              {mensajePuja}
+            </p>
           )}
         </div>
+      ) : (
+        <div className={styles["subastaFinalizada"]}>
+          <p>Esta subasta ha finalizado</p>
+        </div>
+      )}
+
+      <div className={styles["historialPujas"]}>
+        <h3>Historial de Pujas</h3>
+        {historialPujas && historialPujas.length > 0 ? (
+          <ul>
+            {historialPujas.map((puja, index) => {
+              console.log("Renderizando puja:", puja);
+              return (
+                <li key={index}>
+                  Puja {index + 1}: ${puja.price}
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p>No hay pujas anteriores</p>
+        )}
       </div>
 
       <Link href="/finder">

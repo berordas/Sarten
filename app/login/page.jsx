@@ -29,6 +29,7 @@ export default function Home() {
             localStorage.setItem("accessToken", data.access);
             localStorage.setItem("refreshToken", data.refresh);
             localStorage.setItem("username", data.username);
+            localStorage.setItem("password", password);
             window.location.href = "/";
         } catch (err) {
             setError(err.message);

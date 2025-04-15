@@ -1,41 +1,73 @@
-.user-container {
+.userContainer {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    min-height: calc(100vh - 200px);
 }
 
-.user-profile {
-    flex: 1;
-    padding: 20px;
+.userInfo {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
     text-align: center;
 }
 
-.user-info {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 10px;
-    display: inline-block;
-    text-align: left;
-    max-width: 400px;
-    margin: 0 auto;
+.userInfo p {
+    margin: 1rem 0;
+    text-align: center;
 }
 
 .passwordForm {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-top: 1px solid #ccc;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
-    margin: 2rem 0;
-    padding: 1rem;
-    border-top: 1px solid #ccc;
 }
 
 .passwordForm input {
-    padding: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.message {
-    padding: 0.5rem;
+.passwordForm h3 {
     text-align: center;
+    margin-bottom: 1rem;
+}
+
+.passwordForm button {
+    margin-top: 1rem;
+}
+
+.userSection {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userTitle {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }

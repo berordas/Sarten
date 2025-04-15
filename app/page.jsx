@@ -41,9 +41,11 @@ export default function Home() {
           <a href="/finder" className="cta-button-info">
             Explorar Subastas
           </a>
-          <a href="#" className="cta-button-info">
-            Vender una Sartén
-          </a>
+          {username && (
+            <a href="/auction" className="cta-button-info">
+              Vender una Sartén
+            </a>
+          )}
           {username && (
                         <a className="cta-button-info" onClick={() => router.push("/user")}>
                             Bienvenido {username}
@@ -60,9 +62,15 @@ export default function Home() {
               <figcaption>Sartén de Hierro Fundido</figcaption>
             </figure>
             <p className="price">Precio actual: $50</p>
-            <a href="/detalle/1" className="cta-button-bid">
-              Pujar
-            </a>
+            {username ? (
+              <a href="/detalle/1" className="cta-button-bid">
+                Pujar
+              </a>
+            ) : (
+              <a href="/register" className="cta-button-bid">
+                Registrarse
+              </a>
+            )}
           </article>
           <article className="auction-item">
             <figure>

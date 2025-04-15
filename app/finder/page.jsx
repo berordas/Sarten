@@ -14,17 +14,13 @@ export default function Finder() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [username, setUsername] = useState(null);
 
   // Obtener las categorías al montar el componente
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const token = localStorage.getItem("accessToken");
-        const response = await fetch("https://sarten-backend.onrender.com/api/auctions/categories/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch("https://sarten-backend.onrender.com/api/auctions/categories/");
         if (response.ok) {
           const data = await response.json();
           setCategories(data.results || []);
@@ -35,15 +31,32 @@ export default function Finder() {
     };
 
     fetchCategories();
+    
+    // Obtener datos del usuario
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      fetch("https://sarten-backend.onrender.com/api/users/profile/", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        setUsername(data.username);
+      })
+      .catch(error => {
+        console.error("Error al obtener datos del usuario:", error);
+      });
+    }
   }, []);
-
 
   useEffect(() => {
     const fetchAuctions = async () => {
       try {
         setLoading(true);
         setError(null);
-        const token = localStorage.getItem("accessToken");
         
         // Construir la URL con los parámetros de búsqueda
         let url = new URL("https://sarten-backend.onrender.com/api/auctions/");
@@ -54,11 +67,7 @@ export default function Finder() {
         if (categoria) url.searchParams.append("category", categoria);
         if (query.trim()) url.searchParams.append("text", query.trim());
 
-        const response = await fetch(url.toString(), {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(url.toString());
 
         if (response.ok) {
           const data = await response.json();
@@ -139,17 +148,16 @@ export default function Finder() {
             <div key={subasta.id} className={styles["subasta-item"]}>
               <Image
                 src={subasta.thumbnail || "/img/placeholder.jpg"}
-                alt={subasta.title}
+                alt={`Imagen de la subasta: ${subasta.title}`}
                 width={180}
                 height={180}
                 className={styles["subasta-imagen"]}
               />
               <h3>{subasta.title}</h3>
-              <p className={styles["precio"]}>Precio: ${subasta.price}</p>
-
-              <Link href={`/detalle/${subasta.id}`}>
-                <button className="cta-button-bid">Ver Subasta</button>
-              </Link>
+              <p className={styles["precio"]}>Precio de Salida: ${subasta.price}</p>
+              <a href={username ? `/detalle/${subasta.id}` : "/login"} className="cta-button-bid">
+                  Pujar
+              </a>
             </div>
           ))
         ) : (

@@ -96,16 +96,79 @@
 .pujaInput:focus {
     outline: none;
     border-color: #0070f3;
+    box-shadow: 0 0 0 2px rgba(0,112,243,0.2);
 }
 
 .pujaButton {
     min-width: 150px;
 }
 
+.pujaButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 .pujaInfo {
     color: #666;
     font-size: 0.9rem;
     font-style: italic;
+}
+
+.historialPujas {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.historialPujas h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 8px;
+}
+
+.historialPujas ul {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.historialPujas li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.historialPujas li:last-child {
+    border-bottom: none;
+}
+
+.mensajePuja {
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.exitoso {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 

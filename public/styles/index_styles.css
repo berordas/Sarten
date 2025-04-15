@@ -51,10 +51,13 @@ main {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: visible;
     text-align: center;
     transition: transform 0.3s ease-in-out;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    min-height: 340px;
 }
 
 .auction-item:hover {
@@ -63,6 +66,10 @@ main {
 
 figure {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px;
 }
 
 figure img {
@@ -75,14 +82,6 @@ figure img {
 figcaption {
     font-size: 1.2rem;
     font-weight: bold;
-    margin-top: 10px;
-}
-
-.price {
-    font-size: 1.1rem;
-    color: #d9534f;
-    font-weight: bold;
-    margin: 10px 0;
 }
 
 

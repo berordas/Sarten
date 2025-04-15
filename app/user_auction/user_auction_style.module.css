@@ -1,0 +1,45 @@
+.main-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .auction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    width: 650px;
+    max-width: 90%;
+  }
+  
+  .auction-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .auction-image {
+    width: 200px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-right: 15px;
+  }
+  
+  .auction-details {
+    text-align: left;
+    flex: 1;
+  }
+
+  .auction-buttons {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+  }
+  

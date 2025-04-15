@@ -1,0 +1,46 @@
+.mainContainer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .editAuctionForm {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 650px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .editAuctionForm label {
+    font-weight: bold;
+  }
+  
+  .editAuctionForm input,
+  .editAuctionForm textarea,
+  .editAuctionForm select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .message {
+    text-align: center;
+    color: green;
+  }
+  
+  .error {
+    text-align: center;
+    color: red;
+  }
+  
+  .loading {
+    text-align: center;
+  }
+  

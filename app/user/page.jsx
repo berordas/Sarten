@@ -120,6 +120,15 @@ export default function UserProfile() {
                     <p><strong>Localidad:</strong> {userData.locality}</p>
                     <p><strong>Municipio:</strong> {userData.municipality}</p>
                 </div>
+                <div className={styles["buttonContainer"]}>
+                    <button
+                        type="button"
+                        className="cta-button"
+                        onClick={() => router.push("/user_auction")}
+                    >
+                        Mis subastas
+                    </button>
+                </div>
                 <form className={styles["passwordForm"]} onSubmit={handlePasswordChange}>
                     <h3>Cambiar Contraseña</h3>
                     <input

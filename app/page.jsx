@@ -1,33 +1,61 @@
 "use client";
 import { useRouter } from "next/navigation";
-
 import Image from "next/image";
 import "../public/styles/index_styles.css"; 
 import { useEffect, useState } from "react";
 
-
 export default function Home() {
   const router = useRouter();
   const [username, setUsername] = useState(null);
-
+  const [subastas, setSubastas] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
 
+    // Obtener datos del usuario
     fetch("https://sarten-backend.onrender.com/api/users/profile/", {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-        },
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     })
     .then((res) => res.json())
     .then((data) => {
-        setUsername(data.username);
+      setUsername(data.username);
     });
-}, []);
 
-
+    // Obtener subastas
+    fetch("https://sarten-backend.onrender.com/api/auctions/")
+    .then((res) => res.json())
+    .then((data) => {
+      // Obtener 3 subastas aleatorias
+      const allAuctions = data.results || [];
+      const randomAuctions = [];
+      const totalAuctions = allAuctions.length;
+      
+      if (totalAuctions > 0) {
+        // Obtener 3 índices aleatorios únicos
+        const indices = new Set();
+        while (indices.size < Math.min(3, totalAuctions)) {
+          indices.add(Math.floor(Math.random() * totalAuctions));
+        }
+        
+        // Obtener las subastas correspondientes a esos índices
+        indices.forEach(index => {
+          randomAuctions.push(allAuctions[index]);
+        });
+      }
+      
+      setSubastas(randomAuctions);
+      setLoading(false);
+    })
+    .catch(error => {
+      console.error("Error al obtener subastas:", error);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <main className="main-index">
@@ -47,53 +75,42 @@ export default function Home() {
             </a>
           )}
           {username && (
-                        <a className="cta-button-info" onClick={() => router.push("/user")}>
-                            Bienvenido {username}
-                        </a>
-                    )}
+            <a className="cta-button-info" onClick={() => router.push("/user")}>
+              Bienvenido {username}
+            </a>
+          )}
         </nav>
       </header>
+
       <section className="featured-auctions">
         <h2>Sartenes Destacadas</h2>
         <section className="auction-grid">
-          <article className="auction-item">
-            <figure>
-              <Image src="/img/sarten1.jpg" alt="Sartén antiadherente" width={300} height={200} />
-              <figcaption>Sartén de Hierro Fundido</figcaption>
-            </figure>
-            <p className="price">Precio actual: $50</p>
-            {username ? (
-              <a href="/detalle/1" className="cta-button-bid">
-                Pujar
-              </a>
-            ) : (
-              <a href="/register" className="cta-button-bid">
-                Registrarse
-              </a>
-            )}
-          </article>
-          <article className="auction-item">
-            <figure>
-              <Image src="/img/sarten2.jpg" alt="Sartén antiadherente" width={300} height={200} />
-              <figcaption>Sartén Antiadherente Premium</figcaption>
-            </figure>
-            <p className="price">Precio actual: $35</p>
-            <a href="/detalle/2" className="cta-button-bid">
-              Pujar
-            </a>
-          </article>
-          <article className="auction-item">
-            <figure>
-              <Image src="/img/sarten3.jpg" alt="Sartén antiadherente" width={300} height={200} />
-              <figcaption>Sartén de Cobre Profesional</figcaption>
-            </figure>
-            <p className="price">Precio actual: $75</p>
-            <a href="/detalle/3" className="cta-button-bid">
-              Pujar
-            </a>
-          </article>
+          {loading ? (
+            <p>Cargando subastas...</p>
+          ) : subastas.length > 0 ? (
+            subastas.map((subasta) => (
+              <article key={subasta.id} className="auction-item">
+                <figure>
+                  <Image 
+                    src={subasta.thumbnail || "/img/placeholder.jpg"} 
+                    alt={`Imagen de ${subasta.title}`}
+                    width={300} 
+                    height={200} 
+                  />
+                  <figcaption>{subasta.title}</figcaption>
+                </figure>
+                
+                  <a href={username ? `/detalle/${subasta.id}` : "/login"} className="cta-button-bid">
+                    Pujar
+                  </a>
+              </article>
+            ))
+          ) : (
+            <p>No hay subastas disponibles en este momento.</p>
+          )}
         </section>
       </section>
+
       <aside className="info-section">
         <h2>¿Cómo Funciona?</h2>
         <p>
@@ -104,9 +121,6 @@ export default function Home() {
           Aprender Más
         </a>
       </aside>
-      <section className="no-auctions">
-        <p>No hay subastas activas en este momento. ¡Vuelve pronto!</p>
-      </section>
     </main>
   );
 }

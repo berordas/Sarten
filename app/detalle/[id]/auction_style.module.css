@@ -1,29 +1,111 @@
 .main-detalles {
     text-align: center;
-    padding: 30px;
-    max-width: 600px;
-    margin: 80px auto 80px auto;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .main-detalles img {
-    border-radius: 10px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .descripcion {
     font-size: 1.2rem;
     color: #555;
-    margin-bottom: 15px;
+    margin: 20px 0;
+    text-align: justify;
+    line-height: 1.6;
 }
 
 .precio {
     font-size: 1.5rem;
     font-weight: bold;
     color: #d9534f;
+    margin: 15px 0;
+}
+
+.stock, .brand, .rating, .closing {
+    margin: 10px 0;
+    color: #666;
+}
+
+/* Estados de carga y error */
+.main-detalles p {
+    font-size: 1.1rem;
+    margin: 15px 0;
+}
+
+.main-detalles h1 {
+    color: #333;
     margin-bottom: 20px;
+}
+
+.main-detalles button {
+    margin: 10px;
+    min-width: 150px;
+}
+
+.vendedor {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.vendedor span {
+    font-weight: bold;
+    color: #0070f3;
+}
+
+.pujaContainer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 25px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pujaContainer h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.pujaForm {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.pujaInput {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 200px;
+    transition: border-color 0.3s ease;
+}
+
+.pujaInput:focus {
+    outline: none;
+    border-color: #0070f3;
+}
+
+.pujaButton {
+    min-width: 150px;
+}
+
+.pujaInfo {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
 }
 
 

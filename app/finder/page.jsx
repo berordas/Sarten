@@ -37,7 +37,7 @@ export default function Finder() {
     fetchCategories();
   }, []);
 
-  // Efecto para buscar subastas con los filtros aplicados
+
   useEffect(() => {
     const fetchAuctions = async () => {
       try {
@@ -124,7 +124,7 @@ export default function Finder() {
         <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
           <option value="">Todas las categorías</option>
           {categories.map((cat) => (
-            <option key={cat.id} value={cat.id}>
+            <option key={cat.id} value={cat.name}>
               {cat.name}
             </option>
           ))}

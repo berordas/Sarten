@@ -129,6 +129,16 @@ export default function UserProfile() {
                         Mis subastas
                     </button>
                 </div>
+                {}
+                <div className={styles["buttonContainer"]}>
+                <button
+                    type="button"
+                    className="cta-button"
+                    onClick={() => router.push("/user_bid")}
+                >
+                    Mis pujas
+                </button>
+                </div>
                 <form className={styles["passwordForm"]} onSubmit={handlePasswordChange}>
                     <h3>Cambiar Contraseña</h3>
                     <input

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./edit_auction_style.module.css";
 
-export default function EditAuction() {
+function EditAuctionContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const auctionId = searchParams.get("auctionId");
@@ -280,5 +280,13 @@ export default function EditAuction() {
         </button>
       </form>
     </main>
+  );
+}
+
+export default function EditAuction() {
+  return (
+    <Suspense fallback={<div className={styles["loading"]}>Cargando...</div>}>
+      <EditAuctionContent />
+    </Suspense>
   );
 }

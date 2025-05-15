@@ -1,0 +1,50 @@
+.bidSection{
+    display: flex;
+    flex-direction: line;
+    margin-bottom: 1rem;
+}
+
+.commentsSection {
+    margin: 20px 0;
+}
+
+.commentItem {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.commentButtons {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.editForm {
+    margin: 10px 0;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+.ratingsSection {
+    margin: 20px 0;
+}
+
+.ratingItem {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.ratingInput {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ratingInput input {
+    width: 60px;
+}

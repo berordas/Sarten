@@ -1,0 +1,22 @@
+.header {
+    background-color: black;
+    color: white; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 1rem; 
+}
+
+.actionContainer {
+    display: flex; 
+    gap: 1rem;
+}
+
+.linkStyle {
+    text-decoration: none; 
+    color: white; 
+    :hover {
+        text-decoration: underline;
+        color: #ccc;
+    }
+}

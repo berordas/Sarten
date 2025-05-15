@@ -1,6 +1,6 @@
 export const doRegister = async (username, email, password, first_name, last_name, birth_date, locality, municipality) => {
     const formattedDate = birth_date.split("/").reverse().join("-");
-    const response = await fetch("http://127.0.0.1:8000/api/users/register/", {
+    const response = await fetch("https://sarten-backend.onrender.com/api/users/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

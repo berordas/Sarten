@@ -1,5 +1,5 @@
 export const getAuctions = async (auctioneer) => {
-    let url = new URL("http://127.0.0.1:8000/api/auctions/");
+    let url = new URL("https://sarten-backend.onrender.com/api/auctions/");
     
     if (auctioneer) url.searchParams.append("auctioneer", auctioneer);
 
@@ -23,7 +23,7 @@ export const getAuctions = async (auctioneer) => {
 
 
 export const deleteAuction = (token, auctionId) => {
-    return fetch(`http://127.0.0.1:8000/api/auctions/${auctionId}/`, {
+    return fetch(`https://sarten-backend.onrender.com/api/auctions/${auctionId}/`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`,

@@ -1,6 +1,6 @@
 export const getCategories = async (setCategories) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/auctions/categories/");
+      const response = await fetch("https://sarten-backend.onrender.com/api/auctions/categories/");
       if (response.ok) {
         const data = await response.json();
         setCategories(data.results || []);
@@ -11,7 +11,7 @@ export const getCategories = async (setCategories) => {
   };
 
 export const createAuc = async (token,auctionData) => {
-  const response = await fetch(`http://127.0.0.1:8000/api/auctions/`, {
+  const response = await fetch(`https://sarten-backend.onrender.com/api/auctions/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

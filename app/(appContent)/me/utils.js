@@ -1,5 +1,5 @@
 export const getProfile = async (token) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/users/profile/`, {
+    const response = await fetch(`https://sarten-backend.onrender.com/api/users/profile/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -8,7 +8,7 @@ export const getProfile = async (token) => {
 }
 
 export const changePassword = async (token, oldPassword, newPassword) => {
-    const response = await fetch("http://127.0.0.1:8000/api/users/change-password/", {
+    const response = await fetch("https://sarten-backend.onrender.com/api/users/change-password/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

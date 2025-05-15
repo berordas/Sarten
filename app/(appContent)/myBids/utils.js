@@ -2,7 +2,7 @@ export async function getAllBids(token) {
   try {
     // 1. Obtener todas las subastas (con paginación)
     let allAuctions = [];
-    let nextPage = "http://127.0.0.1:8000/api/auctions";
+    let nextPage = "https://sarten-backend.onrender.com/api/auctions";
 
     while (nextPage) {
       const auctionsResponse = await fetch(nextPage, {
@@ -27,7 +27,7 @@ export async function getAllBids(token) {
     const bidsArrays = await Promise.all(
       allAuctions.map(async (auction) => {
         let allBidsForAuction = [];
-        let nextBidPage = `http://127.0.0.1:8000/api/auctions/${auction.id}/bid`;
+        let nextBidPage = `https://sarten-backend.onrender.com/api/auctions/${auction.id}/bid`;
 
         while (nextBidPage) {
           const bidResponse = await fetch(nextBidPage, {
@@ -64,7 +64,7 @@ export async function getAllBids(token) {
 
 
 export const deleteBid = (token, auctionId, bidId) => {
-  return fetch(`http://127.0.0.1:8000/api/auctions/${auctionId}/bid/${bidId}/`, {
+  return fetch(`https://sarten-backend.onrender.com/api/auctions/${auctionId}/bid/${bidId}/`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,

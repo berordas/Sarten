@@ -1,5 +1,5 @@
 export const getAuction = async (id, setAuction) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/auctions/${id}/`);
+    const response = await fetch(`https://sarten-backend.onrender.com/api/auctions/${id}/`);
     if (response.ok) {
         const data = await response.json();
         setAuction(data);
@@ -9,7 +9,7 @@ export const getAuction = async (id, setAuction) => {
 export const getBids = async (id, setBids) => {
     try {
         let allBids = [];
-        let nextPage = `http://127.0.0.1:8000/api/auctions/${id}/bid/`;
+        let nextPage = `https://sarten-backend.onrender.com/api/auctions/${id}/bid/`;
 
         while (nextPage) {
             const response = await fetch(nextPage);
@@ -27,7 +27,7 @@ export const getBids = async (id, setBids) => {
 }
 
 export const doBid = async(id, user, amount, token) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/auctions/${id}/bid/`, {
+    const response = await fetch(`https://sarten-backend.onrender.com/api/auctions/${id}/bid/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export const doBid = async(id, user, amount, token) => {
 
 
 export const doComment = async(auctionId, comment, token, username) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/auctions/${auctionId}/comment/`, {
+    const response = await fetch(`https://sarten-backend.onrender.com/api/auctions/${auctionId}/comment/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export const doComment = async(auctionId, comment, token, username) => {
 export const getComments = async (id, setComments, username) => {
     try {
         let allComments = [];
-        let nextPage = `http://127.0.0.1:8000/api/auctions/${id}/comment/`;
+        let nextPage = `https://sarten-backend.onrender.com/api/auctions/${id}/comment/`;
 
         while (nextPage) {
             const response = await fetch(nextPage);
@@ -87,7 +87,7 @@ export const getComments = async (id, setComments, username) => {
 };
 
 export const deleteComment = (token, auctionId, commentId) => {
-    return fetch(`http://127.0.0.1:8000/api/auctions/${auctionId}/comment/${commentId}/`, {
+    return fetch(`https://sarten-backend.onrender.com/api/auctions/${auctionId}/comment/${commentId}/`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`,
@@ -101,7 +101,7 @@ export const deleteComment = (token, auctionId, commentId) => {
 };
 
 export const editComment = async (auctionId, commentId, newText, token) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/auctions/${auctionId}/comment/${commentId}/`, {
+    const response = await fetch(`https://sarten-backend.onrender.com/api/auctions/${auctionId}/comment/${commentId}/`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ export const editComment = async (auctionId, commentId, newText, token) => {
 export const getRatings = async (id, setRatings, username) => {
     try {
         let allRatings = [];
-        let nextPage = `http://127.0.0.1:8000/api/auctions/${id}/rating/`;
+        let nextPage = `https://sarten-backend.onrender.com/api/auctions/${id}/rating/`;
 
         while (nextPage) {
             const response = await fetch(nextPage);
@@ -147,7 +147,7 @@ export const getRatings = async (id, setRatings, username) => {
 };
 
 export const doRating = async(auctionId, ratingValue, token, username) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/auctions/${auctionId}/rating/`, {
+    const response = await fetch(`https://sarten-backend.onrender.com/api/auctions/${auctionId}/rating/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -163,7 +163,7 @@ export const doRating = async(auctionId, ratingValue, token, username) => {
 };
 
 export const deleteRating = (token, auctionId, ratingId) => {
-    return fetch(`http://127.0.0.1:8000/api/auctions/${auctionId}/rating/${ratingId}/`, {
+    return fetch(`https://sarten-backend.onrender.com/api/auctions/${auctionId}/rating/${ratingId}/`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`,
@@ -177,7 +177,7 @@ export const deleteRating = (token, auctionId, ratingId) => {
 };
 
 export const editRating = async (auctionId, ratingId, newValue, token) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/auctions/${auctionId}/rating/${ratingId}/`, {
+    const response = await fetch(`https://sarten-backend.onrender.com/api/auctions/${auctionId}/rating/${ratingId}/`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',

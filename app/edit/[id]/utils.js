@@ -1,5 +1,5 @@
 export const getAuction = async (id, token) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/auctions/${id}/`, {
+    const response = await fetch(`https://sarten-backend.onrender.com/api/auctions/${id}/`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -8,7 +8,7 @@ export const getAuction = async (id, token) => {
 };
 
 export const updateAuction = async (id, token, formData) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/auctions/${id}/`, {
+    const response = await fetch(`https://sarten-backend.onrender.com/api/auctions/${id}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export const updateAuction = async (id, token, formData) => {
 
 export const getCategories = async (setCategories) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/auctions/categories/");
+      const response = await fetch("https://sarten-backend.onrender.com/api/auctions/categories/");
       if (response.ok) {
         const data = await response.json();
         setCategories(data.results || []);

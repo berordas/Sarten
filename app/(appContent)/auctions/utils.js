@@ -1,5 +1,5 @@
 export const getAuctions = async (precioMin, precioMax, categoria, query) => {
-    let url = new URL("http://127.0.0.1:8000/api/auctions/");
+    let url = new URL("https://sarten-backend.onrender.com/api/auctions/");
     
     if (precioMin) url.searchParams.append("priceMin", precioMin);
     if (precioMax) url.searchParams.append("priceMax", precioMax);
@@ -27,7 +27,7 @@ export const getAuctions = async (precioMin, precioMax, categoria, query) => {
 
 export const getCategories = async (setCategories) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/auctions/categories/");
+      const response = await fetch("https://sarten-backend.onrender.com/api/auctions/categories/");
       if (response.ok) {
         const data = await response.json();
         setCategories(data.results || []);
